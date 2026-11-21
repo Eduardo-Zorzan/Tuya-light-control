@@ -54,13 +54,18 @@ struct LuzTab: View {
 
     private func modeButton(_ title: String, _ mode: LightMode) -> some View {
         let active = state.mode == mode
-        return Button(title) { model.setMode(mode) }
-            .buttonStyle(.plain)
-            .font(.system(size: 11, weight: .medium))
-            .foregroundStyle(active ? Color.white : Theme.secondaryText)
-            .padding(.horizontal, 10).padding(.vertical, 2)
-            .background(RoundedRectangle(cornerRadius: 6).fill(active ? Color.white.opacity(0.15) : .clear))
-            .accessibilityAddTraits(active ? .isSelected : [])
+        return Button {
+            model.setMode(mode)
+        } label: {
+            Text(title)
+                .font(.system(size: 11, weight: .medium))
+                .foregroundStyle(active ? Color.white : Theme.secondaryText)
+                .padding(.horizontal, 10).padding(.vertical, 2)
+                .background(RoundedRectangle(cornerRadius: 6).fill(active ? Color.white.opacity(0.15) : .clear))
+                .contentShape(RoundedRectangle(cornerRadius: 6))
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(active ? .isSelected : [])
     }
 
     // MARK: Wheel card

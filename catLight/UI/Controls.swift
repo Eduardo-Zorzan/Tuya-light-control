@@ -120,6 +120,7 @@ struct TabBar<Tab: Hashable & CaseIterable & Identifiable>: View where Tab.AllCa
                     .padding(.vertical, 6)
                     .foregroundStyle(active ? Color.white : Theme.secondaryText)
                     .background(RoundedRectangle(cornerRadius: 8).fill(active ? Theme.tabActive : .clear))
+                    .contentShape(RoundedRectangle(cornerRadius: 8))
                 }
                 .buttonStyle(.plain)
                 .accessibilityAddTraits(active ? .isSelected : [])
